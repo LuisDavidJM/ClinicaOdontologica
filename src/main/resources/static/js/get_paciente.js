@@ -47,11 +47,8 @@ window.addEventListener('load', function () {
                     '<td class=\"td_apellido\">' + paciente.apellido.toUpperCase() + '</td>' +
                     '<td class=\"td_cedula\">' + paciente.cedula.toUpperCase() + '</td>' +
                     '<td class=\"td_fechaIngreso\">' + paciente.fechaIngreso.toUpperCase() + '</td>' +
-                    '<td class=\"td_calle\">' + paciente.domicilio.calle.toUpperCase() + '</td>' +
-                    '<td class=\"td_calle\">' + paciente.domicilio.numero.toUpperCase() + '</td>' +
-                    '<td class=\"td_calle\">' + paciente.domicilio.localidad.toUpperCase() + '</td>' +
-                    '<td class=\"td_calle\">' + paciente.domicilio.provincia.toUpperCase() + '</td>' +
-                    '<td class=\"td_calle\">' + paciente.email.toUpperCase() + '</td>' +
+                     '<td class=\"td_direccion\">' + paciente.domicilio.calle.toUpperCase() + '</td>' +
+                   '<td class=\"td_calle\">' + paciente.email.toUpperCase() + '</td>' +
                     '<td>' + updateButton + '</td>'+
                     '<td>' + deleteButton + '</td>';
 
@@ -62,7 +59,7 @@ window.addEventListener('load', function () {
 
     (function(){
       let pathname = window.location.pathname;
-      if (pathname == "/get_pacientes.html") {
+      if (pathname == "/peliculaList.html") {
           document.querySelector(".nav .nav-item a:last").addClass("active");
       }
     })
