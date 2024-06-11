@@ -217,5 +217,3 @@ CREATE TABLE ODONTOLOGOS (ID INT AUTO_INCREMENT PRIMARY, MATRICULA VARCHAR(100) 
 [2024-05-30 00:12:14] [ INFO ] [OdontologoDAOH2:88] iniciando las operaciones de : Listado  
 [2024-05-30 00:12:59] [ INFO ] [BD:35] tabla creada con exito
 [2024-05-30 00:13:09] [ INFO ] [OdontologoDAOH2:88] iniciando las operaciones de : Listado  
-[2024-06-04 07:28:29] [ INFO ] [BD:35] tabla creada con exito
-[2024-06-04 07:30:22] [ INFO ] [OdontologoDAOH2:88] iniciando las operaciones de : Listado  

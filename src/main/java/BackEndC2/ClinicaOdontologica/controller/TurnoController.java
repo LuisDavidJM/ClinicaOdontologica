@@ -1,6 +1,6 @@
 package BackEndC2.ClinicaOdontologica.controller;
 
-import BackEndC2.ClinicaOdontologica.model.Turno;
+import BackEndC2.ClinicaOdontologica.entity.Turno;
 import BackEndC2.ClinicaOdontologica.service.OdontologoService;
 import BackEndC2.ClinicaOdontologica.service.PacienteService;
 import BackEndC2.ClinicaOdontologica.service.TurnoService;
@@ -12,7 +12,7 @@ import java.util.List;
 @RestController
 @RequestMapping("/turnos")
 public class TurnoController {
-    private TurnoService turnoService;
+    /*private TurnoService turnoService;
 
     public TurnoController() {
         turnoService= new TurnoService();
@@ -32,5 +32,5 @@ public class TurnoController {
     @GetMapping
     public ResponseEntity<List<Turno>> listarTodosLosTurnos(){
         return ResponseEntity.ok(turnoService.listarTurnos());
-    }
+    }*/
 }

@@ -1,4 +1,4 @@
-package BackEndC2.ClinicaOdontologica.model;
+package BackEndC2.ClinicaOdontologica.entity;
 
 public class Odontologo {
     private Integer id;
