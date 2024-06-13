@@ -1,28 +1,39 @@
 package BackEndC2.ClinicaOdontologica.entity;
 
+import jakarta.persistence.*;
+
 import java.time.LocalDate;
 
+@Entity
+@Table(name = "turnos")
 public class Turno {
-    private Integer id;
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+    @ManyToOne
+    @JoinColumn(name = "paciente_id",referencedColumnName = "id")
     private Paciente paciente;
+    @ManyToOne
+    @JoinColumn(name = "odontologos_id",referencedColumnName = "id")
     private Odontologo odontologo;
+    @Column
     private LocalDate fecha;
 
     public Turno() {
     }
 
-    public Turno(Integer id, Paciente paciente, Odontologo odontologo, LocalDate fecha) {
+    public Turno(Long id, Paciente paciente, Odontologo odontologo, LocalDate fecha) {
         this.id = id;
         this.paciente = paciente;
         this.odontologo = odontologo;
         this.fecha = fecha;
     }
 
-    public Integer getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(Integer id) {
+    public void setId(Long id) {
         this.id = id;
     }
 

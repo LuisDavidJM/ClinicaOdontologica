@@ -1,8 +1,10 @@
 package BackEndC2.ClinicaOdontologica.controller;
 
 import BackEndC2.ClinicaOdontologica.entity.Paciente;
+import BackEndC2.ClinicaOdontologica.exception.ResourceNotFoundException;
 import BackEndC2.ClinicaOdontologica.service.PacienteService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -56,13 +58,14 @@ public class PacienteController {
         return ResponseEntity.ok(pacienteService.buscarTodos());
     }
     @DeleteMapping("/eliminar/{id}")
-    public ResponseEntity<String> eliminarPaciente(@PathVariable Long id){
+    public ResponseEntity<String> eliminarPaciente(@PathVariable Long id) throws ResourceNotFoundException {
         Optional<Paciente> pacienteBuscado= pacienteService.buscarPorID(id);
         if(pacienteBuscado.isPresent()){
             pacienteService.eliminarPaciente(id);
             return ResponseEntity.ok("paciente eliminado con exito");
         }else{
-            return ResponseEntity.badRequest().body("paciente no encontrado");
+            //aca lanzamos la exception
+            throw new ResourceNotFoundException("No existe ese id : "+id);
         }
     }
 
