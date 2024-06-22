@@ -56,13 +56,10 @@ window.addEventListener('load', function () {
 
     })
     })
-
     (function(){
-      let pathname = window.location.pathname;
-      if (pathname == "/peliculaList.html") {
-          document.querySelector(".nav .nav-item a:last").addClass("active");
-      }
-    })
-
-
+          let pathname = window.location.pathname;
+          if (pathname == "/peliculaList.html") {
+              document.querySelector(".nav .nav-item a:last").addClass("active");
+          }
+        })
     })

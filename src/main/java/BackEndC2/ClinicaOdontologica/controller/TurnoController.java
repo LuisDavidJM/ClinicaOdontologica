@@ -3,11 +3,13 @@ package BackEndC2.ClinicaOdontologica.controller;
 import BackEndC2.ClinicaOdontologica.entity.Odontologo;
 import BackEndC2.ClinicaOdontologica.entity.Paciente;
 import BackEndC2.ClinicaOdontologica.entity.Turno;
+import BackEndC2.ClinicaOdontologica.exception.BadRequestException;
 import BackEndC2.ClinicaOdontologica.exception.ResourceNotFoundException;
 import BackEndC2.ClinicaOdontologica.service.OdontologoService;
 import BackEndC2.ClinicaOdontologica.service.PacienteService;
 import BackEndC2.ClinicaOdontologica.service.TurnoService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -37,9 +39,13 @@ public class TurnoController {
           return ResponseEntity.ok(turnoService.registrarTurno(turno));
       }else{
           //bad request or not found
-          return ResponseEntity.badRequest().build();
+          throw new BadRequestException("El paciente o el odontólogo no existen.");
       }
-          }
+    }
+    @ExceptionHandler(BadRequestException.class)
+    public ResponseEntity<String> handleBadRequestException(BadRequestException ex) {
+        return new ResponseEntity<>(ex.getMessage(), HttpStatus.BAD_REQUEST);
+    }
     @GetMapping
     public ResponseEntity<List<Turno>> listarTodosLosTurnos(){
         return ResponseEntity.ok(turnoService.listarTodos());
