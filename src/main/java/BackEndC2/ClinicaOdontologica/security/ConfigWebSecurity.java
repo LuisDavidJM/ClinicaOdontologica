@@ -37,9 +37,9 @@ public class ConfigWebSecurity {
         http
                 .csrf(AbstractHttpConfigurer::disable)
                 .authorizeHttpRequests((authz) -> authz
-                .requestMatchers("/**").hasRole("USER")
-
-                .anyRequest().authenticated()
+                        .requestMatchers("/login", "/logout").permitAll()
+                        .requestMatchers("/**").hasRole("USER")
+                        .anyRequest().authenticated()
                 )
                 .formLogin(withDefaults())
                 .logout(withDefaults());

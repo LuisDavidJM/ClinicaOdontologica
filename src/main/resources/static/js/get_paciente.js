@@ -42,8 +42,7 @@ window.addEventListener('load', function () {
             //como primer columna pondremos el boton modificar
             //luego los datos de la pelicula
             //como ultima columna el boton eliminar
-            pacienteRow.innerHTML = '<td>' + paciente.id + '</td>' +
-                    '<td class=\"td_nombre\">' + paciente.nombre.toUpperCase() + '</td>' +
+            pacienteRow.innerHTML ='<td class=\"td_nombre\">' + paciente.nombre.toUpperCase() + '</td>' +
                     '<td class=\"td_apellido\">' + paciente.apellido.toUpperCase() + '</td>' +
                     '<td class=\"td_cedula\">' + paciente.cedula.toUpperCase() + '</td>' +
                     '<td class=\"td_fechaIngreso\">' + paciente.fechaIngreso.toUpperCase() + '</td>' +
@@ -58,7 +57,7 @@ window.addEventListener('load', function () {
     })
     (function(){
           let pathname = window.location.pathname;
-          if (pathname == "/peliculaList.html") {
+          if (pathname == "/get_pacientes.html") {
               document.querySelector(".nav .nav-item a:last").addClass("active");
           }
         })

@@ -20,7 +20,7 @@ window.addEventListener('load', function () {
                         provincia:document.querySelector('#provincia').value,
            },
            email:document.querySelector('#email').value
-                   };
+        };
         //invocamos utilizando la función fetch la API peliculas con el método POST que guardará
         //la película que enviaremos en formato JSON
         const url = '/paciente';
@@ -70,7 +70,7 @@ window.addEventListener('load', function () {
             let pathname = window.location.pathname;
             if(pathname === "/"){
                 document.querySelector(".nav .nav-item a:first").addClass("active");
-            } else if (pathname == "/peliculaList.html") {
+            } else if (pathname == "/get_odontologos.html") {
                 document.querySelector(".nav .nav-item a:last").addClass("active");
             }
         })();

@@ -17,7 +17,7 @@ window.addEventListener('load', function () {
             //cada fila tendrá un id que luego nos permitirá borrar la fila si eliminamos la pelicula
             var table = document.getElementById("turnoTable");
             var turnoRow =table.insertRow();
-            let tr_id = turno.id;
+            let tr_id = 'tr_' + turno.id;
             turnoRow.id = tr_id;
 
             //por cada pelicula creamos un boton delete que agregaremos en cada fila para poder eliminar la misma
@@ -54,7 +54,7 @@ window.addEventListener('load', function () {
     })
     (function(){
           let pathname = window.location.pathname;
-          if (pathname == "/peliculaList.html") {
+          if (pathname == "/get_turno.html") {
               document.querySelector(".nav .nav-item a:last").addClass("active");
           }
         })

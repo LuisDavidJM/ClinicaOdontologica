@@ -44,7 +44,7 @@ public class PacienteController {
         }
 
     }
-    @GetMapping("/{email}")
+    /*@GetMapping("/{email}")
     public ResponseEntity<Paciente> buscarPorEmail(@PathVariable String email){
         Optional<Paciente> pacienteBuscado= pacienteService.buscarPorEmail(email);
         if(pacienteBuscado.isPresent()){
@@ -52,7 +52,7 @@ public class PacienteController {
         }else{
             return ResponseEntity.notFound().build();
         }
-    }
+    }*/
     @GetMapping
     public ResponseEntity<List<Paciente>> buscarTodos(){
         return ResponseEntity.ok(pacienteService.buscarTodos());

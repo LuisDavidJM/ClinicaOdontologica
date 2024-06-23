@@ -17,8 +17,8 @@ window.addEventListener('load', function () {
             //cada fila tendrá un id que luego nos permitirá borrar la fila si eliminamos la pelicula
             var table = document.getElementById("odontologoTable");
             var odontologoRow =table.insertRow();
-            let tr_id = odontologo.id;
-            odontologo.id = tr_id;
+            let tr_id = 'tr_' + odontologo.id;
+            odontologoRow.id = tr_id;
 
             //por cada pelicula creamos un boton delete que agregaremos en cada fila para poder eliminar la misma
             //dicho boton invocara a la funcion de java script deleteByKey que se encargará
@@ -42,11 +42,10 @@ window.addEventListener('load', function () {
             //como primer columna pondremos el boton modificar
             //luego los datos de la pelicula
             //como ultima columna el boton eliminar
-            odontologoRow.innerHTML = '<td>' + updateButton + '</td>' +
-                    '<td class=\"td_matricula\">' + odontologo.matricula.toUpperCase() + '</td>' +
+            odontologoRow.innerHTML = '<td class=\"td_matricula\">' + odontologo.matricula.toUpperCase() + '</td>' +
                     '<td class=\"td_nombre\">' + odontologo.nombre.toUpperCase() + '</td>' +
                     '<td class=\"td_apellido\">' + odontologo.apellido.toUpperCase() + '</td>' +
-
+                    '<td>' + updateButton + '</td>' +
                     '<td>' + deleteButton + '</td>';
 
         };
@@ -55,7 +54,7 @@ window.addEventListener('load', function () {
     })
 (function(){
       let pathname = window.location.pathname;
-      if (pathname == "/peliculaList.html") {
+      if (pathname == "/get_odontologos.html") {
           document.querySelector(".nav .nav-item a:last").addClass("active");
       }
     })

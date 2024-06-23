@@ -63,7 +63,7 @@ window.addEventListener('load', function () {
         let pathname = window.location.pathname;
         if(pathname === "/"){
             document.querySelector(".nav .nav-item a:first").addClass("active");
-        } else if (pathname == "/peliculaList.html") {
+        } else if (pathname == "/get_odontologos.html") {
             document.querySelector(".nav .nav-item a:last").addClass("active");
         }
     })();
