@@ -17,11 +17,21 @@ private UsuarioRepository usuarioRepository;
 private BCryptPasswordEncoder passwordEncoder;
     @Override
     public void run(ApplicationArguments args) throws Exception {
-        String passSinCifrar= "admin";
-        String passCifrado= passwordEncoder.encode(passSinCifrar);
-        Usuario usuario= new Usuario("jorgito", UsuarioRole.ROLE_USER,passCifrado,"admin@admin.com","jpereyradh");
-        System.out.println("pass cifrado: "+passCifrado);
-        usuarioRepository.save(usuario);
+        // Usuario ROLE_USER
+        String userPassword = "user";
+        String userPasswordEncoded = passwordEncoder.encode(userPassword);
+        Usuario usuarioUser = new Usuario("Luis", UsuarioRole.ROLE_USER, userPasswordEncoded, "user@user.com", "Usuario User");
+
+        // Usuario ROLE_ADMIN
+        String adminPassword = "admin";
+        String adminPasswordEncoded = passwordEncoder.encode(adminPassword);
+        Usuario usuarioAdmin = new Usuario("David", UsuarioRole.ROLE_ADMIN, adminPasswordEncoded, "admin@admin.com", "Usuario Admin");
+
+        usuarioRepository.save(usuarioUser);
+        usuarioRepository.save(usuarioAdmin);
+
+        System.out.println("User password cifrada: " + userPasswordEncoded);
+        System.out.println("Admin password cifrada: " + adminPasswordEncoded);
 
     }
 }

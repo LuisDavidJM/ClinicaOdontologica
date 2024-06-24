@@ -11,6 +11,7 @@ import org.springframework.security.config.annotation.web.configuration.EnableWe
 import org.springframework.security.config.annotation.web.configurers.AbstractHttpConfigurer;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
+import org.springframework.security.web.csrf.CookieCsrfTokenRepository;
 
 import static org.springframework.security.authorization.AuthorityReactiveAuthorizationManager.hasRole;
 import static org.springframework.security.config.Customizer.withDefaults;
@@ -36,9 +37,15 @@ public class ConfigWebSecurity {
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception{
         http
                 .csrf(AbstractHttpConfigurer::disable)
+                //Para hacer pruebas de integracion
+                /*.authorizeHttpRequests(authz -> authz
+                        .anyRequest().permitAll()
+                );*/
                 .authorizeHttpRequests((authz) -> authz
                         .requestMatchers("/login", "/logout").permitAll()
-                        .requestMatchers("/**").hasRole("USER")
+                        .requestMatchers("/", "/index.html").hasAnyRole("USER", "ADMIN")
+                        .requestMatchers("/js/**","/post_turno.html", "/get_turno.html").hasAnyRole("USER", "ADMIN")
+                        .requestMatchers("/**").hasRole("ADMIN")
                         .anyRequest().authenticated()
                 )
                 .formLogin(withDefaults())
