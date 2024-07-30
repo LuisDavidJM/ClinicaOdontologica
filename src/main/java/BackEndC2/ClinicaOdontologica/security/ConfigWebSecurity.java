@@ -42,13 +42,19 @@ public class ConfigWebSecurity {
                         .anyRequest().permitAll()
                 );*/
                 .authorizeHttpRequests((authz) -> authz
-                        .requestMatchers("/login", "/logout").permitAll()
+                        .requestMatchers("/login", "/logout", "/css/**").permitAll()
                         .requestMatchers("/", "/index.html").hasAnyRole("USER", "ADMIN")
                         .requestMatchers("/js/**","/post_turno.html", "/get_turno.html").hasAnyRole("USER", "ADMIN")
                         .requestMatchers("/**").hasRole("ADMIN")
                         .anyRequest().authenticated()
                 )
-                .formLogin(withDefaults())
+                .formLogin(form -> form
+                        .loginPage("/login.html")  // Página de login personalizada
+                        .loginProcessingUrl("/login")  // URL para procesar el formulario de login
+                        .defaultSuccessUrl("/", true)  // URL a la que se redirige después del login exitoso
+                        .failureUrl("/login.html?error=true")  // URL a la que se redirige en caso de fallo
+                        .permitAll()
+                )
                 .logout(withDefaults());
         return http.build();
     }
